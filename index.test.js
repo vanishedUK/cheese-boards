@@ -19,6 +19,15 @@ beforeAll(async () => {
       const users = await User.findAll();
       expect(users.length).toBeGreaterThan(0);
     });
+
+    test('Add a board to a user', async () => {
+        const user = await User.create({ name: 'Mary', email: 'mary@example.com' });
+        const board = await Board.create({ type: 'chess', description: 'classic board game', rating: 5 });
+        await user.addBoard(board);
+        const boards = await user.getBoards();
+        expect(boards.length).toBe(1);
+        expect(boards[0].type).toBe('chess');
+    });
   });
   
   describe('Board model', () => {
@@ -33,6 +42,15 @@ beforeAll(async () => {
     test('Find all boards', async () => {
       const boards = await Board.findAll();
       expect(boards.length).toBeGreaterThan(0);
+    });
+
+    test('Add a cheese to a board', async () => {
+        const board = await Board.create({ type: 'chess', description: 'classic board game', rating: 5 });
+        const cheese = await Cheese.create({ title: 'Cheddar', description: 'best cheese' });
+        await board.addCheese(cheese);
+        const cheeses = await board.getCheeses();
+        expect(cheeses.length).toBe(1);
+        expect(cheeses[0].title).toBe('Cheddar');
     });
   });
   
