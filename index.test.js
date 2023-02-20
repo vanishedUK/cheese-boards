@@ -24,9 +24,9 @@ beforeAll(async () => {
   describe('Board model', () => {
 
     test('Create a new board', async () => {
-      const board = await Board.create({ type: 'chess', description: 'A classic board game', rating: 5 });
+      const board = await Board.create({ type: 'chess', description: 'classic board game', rating: 5 });
       expect(board.type).toBe('chess');
-      expect(board.description).toBe('A classic board game');
+      expect(board.description).toBe('classic board game');
       expect(board.rating).toBe(5);
     });
   
@@ -38,9 +38,9 @@ beforeAll(async () => {
   
   describe('Cheese model', () => {
     test('Create a new cheese', async () => {
-      const cheese = await Cheese.create({ title: 'Cheddar', description: 'A popular cheese' });
+      const cheese = await Cheese.create({ title: 'Cheddar', description: 'best cheese' });
       expect(cheese.title).toBe('Cheddar');
-      expect(cheese.description).toBe('A popular cheese');
+      expect(cheese.description).toBe('best cheese');
     });
   
     test('Find all cheeses', async () => {
